@@ -2,12 +2,13 @@ import os
 import unittest
 from selenium.webdriver.common.keys import Keys
 import time
+from django.test.testcases import LiveServerTestCase
 cwd = os.getcwd()
 print(cwd)
 from selenium import webdriver
 
 
-class NewVisitorTest(unittest.TestCase):
+class NewVisitorTest(LiveServerTestCase):
     def setUp(self):
         self.browser = webdriver.Chrome(executable_path='../../chromedriver.exe')
     def tearDown(self):
@@ -21,7 +22,7 @@ class NewVisitorTest(unittest.TestCase):
     def test_can_start_a_list_and_retrieve_it_later(self):
         # Edith has heard about a cool new online to-do app. She goes
         # to check out its homepage
-        self.browser.get('http://localhost:8000')
+        self.browser.get(self.live_server_url)
         self.assertIn('To-Do', self.browser.title)
         header_text = self.browser.find_element_by_tag_name('h1').text
         self.assertIn('To-Do', header_text)
@@ -54,8 +55,6 @@ class NewVisitorTest(unittest.TestCase):
         time.sleep(3)
         self.fail('Finish the test!')
         
-if __name__ == '__main__':
-    unittest.main(warnings='ignore')
 # She is invited to enter a to-do item straight away
 
 # She types "Buy peacock feathers" into a text box (Edith's hobby
