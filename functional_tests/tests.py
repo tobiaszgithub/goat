@@ -8,7 +8,7 @@ cwd = os.getcwd()
 print(cwd)
 from selenium import webdriver
 
-MAX_WAIT = 10
+MAX_WAIT = 2
 
 def get_webdriver():
     return webdriver.Chrome(executable_path='../../chromedriver.exe')
@@ -65,8 +65,8 @@ class NewVisitorTest(LiveServerTestCase):
         self.wait_for_row_in_list_table('1: Buy peacock feathers')
         self.wait_for_row_in_list_table('2: Use peacock feathers to make a fly')
         
-        time.sleep(1)
-        self.fail('Finish the test!')
+        #time.sleep(1)
+        #self.fail('Finish the test!')
         
 # She is invited to enter a to-do item straight away
 
