@@ -2,7 +2,7 @@ import os
 import unittest
 from selenium.webdriver.common.keys import Keys
 import time
-from django.test.testcases import LiveServerTestCase
+from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.common.exceptions import WebDriverException
 cwd = os.getcwd()
 print(cwd)
@@ -15,7 +15,7 @@ def get_webdriver():
     chrome_options.add_argument("test-type")
     return webdriver.Chrome(executable_path='../../chromedriver.exe', chrome_options=chrome_options)
 
-class NewVisitorTest(LiveServerTestCase):
+class NewVisitorTest(StaticLiveServerTestCase):
     def setUp(self):
         self.browser = get_webdriver()
     def tearDown(self):
