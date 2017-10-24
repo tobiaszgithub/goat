@@ -14,10 +14,22 @@
 			<div class="text-center">
 
 				<h1>{% block header_text %}{% endblock %}</h1>
-				<form method="POST" action="{% block form_action %}{% endblock %}">
+				<form method="POST" action="{% block form_action %}{% endblock %}" novalidate>
+					
 					<input name="item_text" id="id_new_item"
-						class="form-control-lg"
-						placeholder="Enter a to-do item" /> 
+					{% if error %}
+						class="form-control is-invalid"
+					{% else %}
+						class="form-control"
+					{% endif %}
+						
+						
+						placeholder="Enter a to-do item" required /> 
+					{% if error %}
+						<div class="invalid-feedback">
+							{{ error }}
+						</div>
+					{% endif %}
 					{% csrf_token %}
 				</form>
 			</div>
