@@ -16,15 +16,7 @@
 				<h1>{% block header_text %}{% endblock %}</h1>
 				<form method="POST" action="{% block form_action %}{% endblock %}" novalidate>
 					
-					<input name="item_text" id="id_new_item"
-					{% if error %}
-						class="form-control is-invalid"
-					{% else %}
-						class="form-control"
-					{% endif %}
-						
-						
-						placeholder="Enter a to-do item" required /> 
+					{{ form.text }}
 					{% if error %}
 						<div class="invalid-feedback">
 							{{ error }}
