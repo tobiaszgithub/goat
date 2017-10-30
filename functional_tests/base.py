@@ -7,6 +7,9 @@ from selenium import webdriver
 MAX_WAIT = 2
 
 class FunctionalTest(StaticLiveServerTestCase):
+    def get_item_input_box(self):
+        return self.browser.find_element_by_id('id_text')
+    
     def get_webdriver(self):
         chrome_options = webdriver.ChromeOptions()
         chrome_options.add_argument("test-type")
