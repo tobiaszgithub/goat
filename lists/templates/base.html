@@ -14,12 +14,12 @@
 			<div class="text-center">
 
 				<h1>{% block header_text %}{% endblock %}</h1>
-				<form method="POST" action="{% block form_action %}{% endblock %}" novalidate>
+				<form method="POST" action="{% block form_action %}{% endblock %}">
 					
 					{{ form.text }}
-					{% if error %}
+					{% if form.errors %}
 						<div class="invalid-feedback">
-							{{ error }}
+							{{ form.text.errors }}
 						</div>
 					{% endif %}
 					{% csrf_token %}
