@@ -1,3 +1,4 @@
+{% load widget_tweaks %}
 <html>
 <head>
 <meta charset="utf-8">
@@ -15,8 +16,13 @@
 
 				<h1>{% block header_text %}{% endblock %}</h1>
 				<form method="POST" action="{% block form_action %}{% endblock %}">
+					{% if form.errors %}
+						{% render_field  form.text  class+="is-invalid" %}
+					{% else %}
+						{{ form.text }}
+					{% endif %}
 					
-					{{ form.text }}
+					
 					{% if form.errors %}
 						<div class="invalid-feedback">
 							{{ form.text.errors }}
